@@ -369,6 +369,74 @@
 
 
 
+/* === HOME.PHP === */
+
+#sectionOfertas{
+    display: flex;
+    justify-content: center;
+}
+
+
+.divOfertasDestacadas {
+    display: flex;
+    padding: 3em;
+    width: 70%;
+    background-color: #E7F6F8;
+    border-radius: 2em;
+    box-shadow: 0em 0.625em 0em 0 #7CC7F9;
+    margin: 5em;
+    justify-content: space-between;
+}
+
+.ofertasDestacadas {
+    display: flex;
+    padding: 1.5em 2em 0 2em;
+    background-color: #0876BE;
+    border-radius: 2em;
+    box-shadow: 0em 0.625em 0em 0 #075588;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 1.5em;
+    margin-right: 1.5em;
+    
+    flex-direction: column;
+
+}
+
+
+.tituloOferta {
+    display: flex;
+    color: white;
+    padding-bottom: 2em;
+}
+
+
+.logoOferta {
+    padding-bottom: 2em;
+}
+
+.logoOferta img{
+   height: 1.5em;
+   width: auto;
+}
+
+
+.descOferta {
+    padding-bottom: 2em;
+}
+
+.verMasOferta a {
+    display: flex;
+    justify-content: center;
+    padding-top: 2em;
+    padding-bottom: 1em;
+}
+
+/* ================= */
+
+
+
+
 .msgError {
     color: #d8000c;
     background-color: #ffe6e6;

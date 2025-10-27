@@ -25,53 +25,53 @@
             <h2>Encuentra tu sitio</h2>
             <p>Trabajamos para que tu búsqueda de empleo sea una experiencia tranquila y exitosa</p>
         </section>
-        <section id="ofertasDestacadas">
-            <h3>
-                Ofertas destacdas
-            </h3>
-            <div class="divOvertasDestacadas">
+        <h3>
+            Ofertas destacadas
+        </h3>
+        <section id="sectionOfertas">
+            <div class="divOfertasDestacadas">
                 <div class="ofertasDestacadas">
                     <div class="tituloOferta">
-
+                        <p>Puesto placholder</p>
                     </div>
                     <div class="logoOferta">
-
+                        <img src="assets/imagenes/placeholder_logo_ofertas.png" alt="">
                     </div>
                     <div class="descOferta">
-
+                        <p>Desc de placeholder nanananana dedede nanananana</p>
                     </div>
                     <div class="verMasOferta">
-                        
+                        <a href="#">Ver más</a>
                     </div>
                 </div>
 
                 <div class="ofertasDestacadas">
                     <div class="tituloOferta">
-
+                        <p>Puesto placholder</p>
                     </div>
                     <div class="logoOferta">
-
+                        <img src="../public/assets/imagenes/placeholder_logo_ofertas.png" alt="">
                     </div>
                     <div class="descOferta">
-
+                        <p>Desc de placeholder nanananana dedede nanananana</p>
                     </div>
                     <div class="verMasOferta">
-                        
+                        <a href="#">Ver más</a>
                     </div>
                 </div>
 
                 <div class="ofertasDestacadas">
                     <div class="tituloOferta">
-
+                        <p>Puesto placholder</p>
                     </div>
                     <div class="logoOferta">
-
+                        <img src="../public/assets/imagenes/placeholder_logo_ofertas.png" alt="">
                     </div>
                     <div class="descOferta">
-
+                        <p>Desc de placeholder nanananana dedede nanananana</p>
                     </div>
                     <div class="verMasOferta">
-                        
+                        <a href="#">Ver más</a>
                     </div>
                 </div>
 
