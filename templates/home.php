@@ -1,86 +1,98 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NTRYJOB - Encuentra tu sitio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/styles.css">
-</head>
-<body>
-    <header>
-        <nav>
-            <h1>NTRYJOB</h1>
-            <ul>
-                <li><a href="index.php">Inicio</a></li>
-                <li><a href="index.php?page=login">Login</a></li>
-                <li><a href="index.php?page=register">Registro</a></li>
-            </ul>
-        </nav>
-    </header>
-    
-    <main>
-        <!-- hero es por convenio la forma de llamar a la seccion principal d euna pagina, generalmente la primera que se ve al entrar -->
-        <section class="hero">
-            <h2>Encuentra tu sitio</h2>
-            <p>Trabajamos para que tu búsqueda de empleo sea una experiencia tranquila y exitosa</p>
-        </section>
-        <h3>
-            Ofertas destacadas
-        </h3>
-        <section id="sectionOfertas">
-            <div class="divOfertasDestacadas">
-                <div class="ofertasDestacadas">
-                    <div class="tituloOferta">
-                        <p>Puesto placholder</p>
-                    </div>
-                    <div class="logoOferta">
-                        <img src="assets/imagenes/placeholder_logo_ofertas.png" alt="">
-                    </div>
-                    <div class="descOferta">
-                        <p>Desc de placeholder nanananana dedede nanananana</p>
-                    </div>
-                    <div class="verMasOferta">
-                        <a href="#">Ver más</a>
-                    </div>
-                </div>
+<?php $this->layout('layout', ['title' => 'Inicio']) ?>
 
-                <div class="ofertasDestacadas">
-                    <div class="tituloOferta">
-                        <p>Puesto placholder</p>
-                    </div>
-                    <div class="logoOferta">
-                        <img src="../public/assets/imagenes/placeholder_logo_ofertas.png" alt="">
-                    </div>
-                    <div class="descOferta">
-                        <p>Desc de placeholder nanananana dedede nanananana</p>
-                    </div>
-                    <div class="verMasOferta">
-                        <a href="#">Ver más</a>
-                    </div>
-                </div>
+<!-- HERO -->
+<section class="hero">
+    <div class="container">
+        <h1>Encuentra tu sitio</h1>
+        <p>Trabajamos para que tu búsqueda de empleo sea una experiencia tranquila y exitosa. Explora nuestras últimas ofertas</p>
+        
+        <div class="search-box">
+            <input type="text" placeholder="Buscar por puesto, empresa o sector...">
+            <input type="text" placeholder="En toda España">
+            <button class="btn-search">Buscar</button>
+        </div>
+    </div>
+</section>
 
-                <div class="ofertasDestacadas">
-                    <div class="tituloOferta">
-                        <p>Puesto placholder</p>
-                    </div>
-                    <div class="logoOferta">
-                        <img src="../public/assets/imagenes/placeholder_logo_ofertas.png" alt="">
-                    </div>
-                    <div class="descOferta">
-                        <p>Desc de placeholder nanananana dedede nanananana</p>
-                    </div>
-                    <div class="verMasOferta">
-                        <a href="#">Ver más</a>
-                    </div>
+<!-- OFERTAS DESTACADAS -->
+<section class="ofertas-destacadas">
+    <div class="container">
+        <h2>Ofertas destacadas</h2>
+        
+        <div class="ofertas-container">
+            <!-- Card 1 -->
+            <div class="oferta-card">
+                <div class="oferta-logo">
+                    <img src="/assets/imagenes/placeholder_logo_ofertas.png" alt="Logo">
                 </div>
-
+                <h3>Desarrollador Front-End Junior</h3>
+                <span class="oferta-badge">OFERTA POPULAR</span>
+                <p>Únete a nuestro equipo para gestionar campañas de PPC y SEO a nivel internacional</p>
+                <a href="#" class="btn-ver-oferta">Ver Oferta</a>
             </div>
-        </section>
-    </main>
-    
-    <footer>
-        <p>&copy; 2025 NTRYJOB - Tu espacio de búsqueda tranquilo</p>
-    </footer>
-</body>
-</html>
+
+            <!-- Card 2 -->
+            <div class="oferta-card">
+                <div class="oferta-logo">
+                    <img src="/assets/imagenes/placeholder_logo_ofertas.png" alt="Logo">
+                </div>
+                <h3>Especialista en Marketing Digital</h3>
+                <span class="oferta-badge">OFERTA CARA</span>
+                <p>Únete a nuestro equipo para gestionar campañas de PPC y SEO a nivel internacional</p>
+                <a href="#" class="btn-ver-oferta">Ver Oferta</a>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="oferta-card">
+                <div class="oferta-logo">
+                    <img src="/assets/imagenes/placeholder_logo_ofertas.png" alt="Logo">
+                </div>
+                <h3>Diseñador UX/UI Senior</h3>
+                <span class="oferta-badge">OFERTA POPULAR</span>
+                <p>Únete a nuestro equipo para gestionar campañas de PPC y SEO a nivel internacional</p>
+                <a href="#" class="btn-ver-oferta">Ver Oferta</a>
+            </div>
+        </div>
+
+        <div class="ofertas-footer">
+            <a href="#" class="btn-ver-todos">Ver todos los ofertas</a>
+        </div>
+    </div>
+</section>
+
+<!-- NUESTROS COLABORADORES -->
+<section class="colaboradores">
+    <div class="container">
+        <h2>Nuestros Colaboradores</h2>
+        
+        <div class="colaboradores-container">
+            <div class="colaborador-card">
+                <img src="/assets/imagenes/placeholder_logo_ofertas.png" alt="Nter">
+            </div>
+            <div class="colaborador-card">
+                <img src="/assets/imagenes/placeholder_logo_ofertas.png" alt="NTT Data">
+            </div>
+            <div class="colaborador-card">
+                <img src="/assets/imagenes/placeholder_logo_ofertas.png" alt="Colaborador 3">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER CTA -->
+<section class="footer-cta">
+    <div class="container">
+        <div class="footer-cta-container">
+            <div class="footer-cta-card">
+                <h3>Nunca terminamos de aprender</h3>
+                <p>¿Tienes alguna sugerencia que crees que podría mejorar nuestro portal? ¡Cuéntanosla!</p>
+                <a href="#" class="btn-footer">Preguntas Frecuentes</a>
+            </div>
+            <div class="footer-cta-card">
+                <h3>Contacto</h3>
+                <p>¿Dudas? ¿Problemas? Estaremos aquí para ayudarte. Accede a nuestra sección de Preguntas Frecuentes o plantéanos una pregunta en nuestro formulario Contacto con un simple clic directamente.</p>
+                <a href="#" class="btn-footer">Contactar Soporte</a>
+            </div>
+        </div>
+    </div>
+</section>
