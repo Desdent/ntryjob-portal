@@ -566,7 +566,7 @@ footer p {
 }
 
 #subirCV {
-    color: #E7F6F8;
+    color: #000000;
 }
 
 .nota-pequena {
@@ -810,6 +810,195 @@ footer p {
 .auth-footer a:hover {
     text-decoration: underline;
 }
+
+
+
+
+
+
+
+
+/* ========== MODAL - FONDO OSCURO ========== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* ========== CONTENIDO DEL MODAL ========== */
+.modal-content {
+    background-color: #fefefe;
+    margin: 3% auto;
+    padding: 0;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 1000px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* ========== HEADER DEL MODAL ========== */
+.modal-header {
+    padding: 20px 30px;
+    background-color: #2563eb;
+    color: white;
+    border-radius: 12px 12px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.modal-close {
+    color: white;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.modal-close:hover {
+    color: #dbeafe;
+}
+
+/* ========== BODY DEL MODAL ========== */
+.modal-body {
+    padding: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+/* ========== COLUMNAS DEL FORMULARIO ========== */
+.form-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* ========== GRUPOS DE FORMULARIO ========== */
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #333;
+    font-size: 14px;
+}
+
+.form-group input {
+    padding: 12px 15px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* ========== ESTADOS DE VALIDACIÓN ========== */
+.form-group input.valid {
+    border-color: #4caf50;
+    background-color: #f1f8f4;
+}
+
+.form-group input.invalid {
+    border-color: #f44336;
+    background-color: #fff5f5;
+}
+
+/* ========== MENSAJES DE ERROR ========== */
+.error-message {
+    color: #f44336;
+    font-size: 12px;
+    margin-top: 5px;
+    min-height: 18px;
+    display: block;
+}
+
+/* ========== FOOTER DEL MODAL ========== */
+.modal-footer {
+    padding: 20px 30px;
+    background-color: #f8f9fa;
+    border-radius: 0 0 12px 12px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+}
+
+.modal-footer button {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* ========== BOTÓN CANCELAR ========== */
+.btn-cancelar {
+    box-shadow: 0em 0.35em 0em 0 #7CC7F9;
+    color: #0876BE;
+    background: #E7F6F8;
+}
+
+.btn-cancelar:hover {
+    background: #075588;
+    box-shadow: 0em 0.35em 0em 0 #075588;
+    color: #ffffff;
+}
+
+/* ========== BOTÓN REGISTRARSE ========== */
+.btn-registrar {
+    background-color: #2563eb;
+    color: white;
+    box-shadow: 0em 0.35em 0em 0 #075588;
+}
+
+.btn-registrar:hover {
+    background: #075588;
+    box-shadow: 0em 0.35em 0em 0 #075588;
+    color: #ffffff;
+}
+
+/* ========== BOTÓN PARA ABRIR MODAL ========== */
+.btn-registro-alumno {
+    padding: 15px 30px;
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-registro-alumno:hover {
+    background-color: #1d4ed8;
+}
+
+
+
+
 
 /* === MENSAJES DE ERROR === */
 .msgError {

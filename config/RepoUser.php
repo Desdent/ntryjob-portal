@@ -74,16 +74,16 @@ class RepoUser {
         try {
             $this->pdo->beginTransaction();
             
-            // 1. Crear USER
-            $userId = $this->createUser($userData['email'], $userData['password'], 3); // ROL_ID = 3 (alumno)
+
+            $userId = $this->createUser($userData['email'], $userData['password'], 3); 
             
-            // 2. Crear ALUMNO
+        
             $sql = "INSERT INTO ALUMNO (nombre, apellido, fechaNacimiento, telefono, pais, provincia, ciudad, direccion, cv, foto, USER_id)
                     VALUES (:nombre, :apellido, :fechaNacimiento, :telefono, :pais, :provincia, :ciudad, :direccion, :cv, :foto, :userId)";
             
             $stmt = $this->pdo->prepare($sql);
             $stmt->bindValue(":nombre", $alumnoData['nombre']);
-            $stmt->bindValue(":apellido", $alumnoData['apellido']);
+            $stmt->bindValue(":apellido", $alumnoData['apellidos']);
             $stmt->bindValue(":fechaNacimiento", $alumnoData['fechaNacimiento']);
             $stmt->bindValue(":telefono", $alumnoData['telefono'] ?? null);
             $stmt->bindValue(":pais", $alumnoData['pais'] ?? null);

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/public/css/styles.css">
 </head>
 <body>
     <header>
@@ -18,7 +18,7 @@
             </ul>
         </nav>
     </header>
-
+    
     <main>
         <div class="divMarcoRegistro">
             <div class="divContentRegistro">
@@ -26,7 +26,7 @@
                     <h3 class="fontDivContent">
                         Crea tu cuenta
                     </h3>
-                    <form action="index.php?page=register" method="post" id="form-registro">
+                    <form action="/api/auth/procesar-alumno.php" method="post" enctype="multipart/form-data" id="form-registro">
                         <div class="columnas-registro">
                             <div class="columna-izq">
                                 <span class="campos-registro">
@@ -41,28 +41,28 @@
 
                                 <span class="campos-registro">
                                     <label for="pais" class="fontDivContent">País: </label><br>
-                                    <input type="text" name="pais" id="pais"><br>
+                                    <input type="text" name="pais" id="pais" required><br>
                                 </span>
 
                                 <span class="campos-registro">
                                     <label for="telefono" class="fontDivContent">Teléfono: </label><br>
-                                    <input type="tel" name="telefono" id="telefono"><br>
+                                    <input type="tel" name="telefono" id="telefono" required><br>
                                 </span>
 
                                 <span class="campos-registro">
                                     <label for="codigoPostal" class="fontDivContent">Código Postal: </label><br>
-                                    <input type="text" name="codigoPostal" id="codigoPostal" class="input-pequeno"><br>
+                                    <input type="text" name="codigoPostal" id="codigoPostal" class="input-pequeno" required><br>
                                 </span>
 
                                 <span class="campos-registro">
                                     <label for="ultimoCiclo" class="fontDivContent">Último ciclo cursado: </label><br>
-                                    <input type="text" name="ultimoCiclo" id="ultimoCiclo"><br>
+                                    <input type="text" name="ultimoCiclo" id="ultimoCiclo" required><br>
                                     <small class="fontDivContent nota-pequena">* Podrás añadir más estudios al completar el registro</small>
                                 </span>
 
                                 <span class="campos-registro">
                                     <label for="subirCV" class="fontDivContent">Subir CV: </label><br>
-                                    <input type="file" name="subirCV" id="subirCV" accept=".pdf,.doc,.docx"><br>
+                                    <input type="file" name="subirCV" id="subirCV" accept=".pdf,.doc,.docx" required><br>
                                 </span>
                             </div>
 
@@ -73,28 +73,33 @@
                                 </span>
 
                                 <span class="campos-registro">
-                                    <label for="contrasena" class="fontDivContent">Contraseña: </label><br>
-                                    <input type="password" name="contrasena" id="contrasenaRegistro" required><br>
+                                    <label for="password" class="fontDivContent">Contraseña: </label><br>
+                                    <input type="password" name="password" id="contrasenaRegistro" required><br>
+                                </span>
+
+                                <span class="campos-registro">
+                                    <label for="fechaNacimiento" class="fontDivContent">Fecha de nacimiento: </label><br>
+                                    <input type="date" name="fechaNacimiento" id="fechaNacimiento" required><br>
                                 </span>
 
                                 <span class="campos-registro">
                                     <label for="provincia" class="fontDivContent">Provincia: </label><br>
-                                    <input type="text" name="provincia" id="provincia"><br>
+                                    <input type="text" name="provincia" id="provincia" required><br>
                                 </span>
 
                                 <span class="campos-registro">
                                     <label for="localidad" class="fontDivContent">Localidad: </label><br>
-                                    <input type="text" name="localidad" id="localidad"><br>
+                                    <input type="text" name="localidad" id="localidad" required><br>
                                 </span>
 
                                 <span class="campos-registro">
                                     <label for="direccion" class="fontDivContent">Dirección: </label><br>
-                                    <input type="text" name="direccion" id="direccion" class="input-largo"><br>
+                                    <input type="text" name="direccion" id="direccion" class="input-largo" required><br>
                                 </span>
 
                                 <span class="campos-registro">
                                     <label for="fechaInicio" class="fontDivContent">Fecha de inicio: </label><br>
-                                    <input type="date" name="fechaInicio" id="fechaInicio"><br>
+                                    <input type="date" name="fechaInicio" id="fechaInicio" required><br>
                                 </span>
 
                                 <span class="campos-registro">

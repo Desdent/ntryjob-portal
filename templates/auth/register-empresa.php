@@ -35,11 +35,11 @@
                 </div>
                 <div class="form-group">
                     <label for="telefono">Teléfono</label>
-                    <input type="tel" id="telefono" name="telefono">
+                    <input type="tel" id="telefono" name="telefono" required>
                 </div>
                 <div class="form-group">
                     <label for="logo">Logo (Imagen)</label>
-                    <input type="file" id="logo" name="logo" accept="image/*">
+                    <input type="file" id="logo" name="logo" accept="image/*" required>
                 </div>
             </div>
 
@@ -49,21 +49,21 @@
                 <div class="form-row">
                     <div class="form-group">
                         <label for="pais">País</label>
-                        <input type="text" id="pais" name="pais" value="España">
+                        <input type="text" id="pais" name="pais" value="España" required>
                     </div>
                     <div class="form-group">
                         <label for="provincia">Provincia</label>
-                        <input type="text" id="provincia" name="provincia">
+                        <input type="text" id="provincia" name="provincia" required>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group">
                         <label for="ciudad">Ciudad</label>
-                        <input type="text" id="ciudad" name="ciudad">
+                        <input type="text" id="ciudad" name="ciudad" required>
                     </div>
                     <div class="form-group">
                         <label for="direccion">Dirección</label>
-                        <input type="text" id="direccion" name="direccion">
+                        <input type="text" id="direccion" name="direccion" required>
                     </div>
                 </div>
             </div>
