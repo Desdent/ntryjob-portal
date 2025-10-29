@@ -8,17 +8,17 @@ use League\Plates\Engine;
 // Configurar Plates
 $templates = new Engine(__DIR__ . '/../templates');
 
-// Obtener página solicitada
+// Obtener página 
 $page = $_GET['page'] ?? 'home';
 
-// Si es POST (envío de formulario login)
+// Si es POST 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email']) && isset($_POST['password'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
     
     // Conectar BD
-    $database = new Database();
-    $pdo = $database->getConnection();
+
+    $pdo = Database::getInstance()->getConnection();
     
     // Crear repositorio
     $repoUser = new RepoUser($pdo);

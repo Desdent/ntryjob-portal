@@ -18,7 +18,7 @@ services:
     image: mysql:8.0
     container_name: ntryjob_db
     environment:
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: 7394
       MYSQL_DATABASE: ntryjob
       MYSQL_USER: admin
       MYSQL_PASSWORD: admin123

@@ -1,5 +1,9 @@
 <?php
 
+ini_set('display_errors', 0);
+ini_set('display_startup_errors', 0);
+error_reporting(E_ALL);
+
 header('Content-Type: application/json');
 
 // Solo aceptar post
@@ -25,11 +29,16 @@ $pais = trim($_POST["pais"] ?? "");
 $provincia = trim($_POST["provincia"] ?? "");
 $ciudad = trim($_POST["localidad"] ?? "");
 $direccion = trim($_POST["direccion"] ?? "");
+$fotoBase64 = $_POST['fotoAlumnoBase64'] ?? null;
+$fotoBlob =  null;
 
 
 //para los errores
 $errores = []; // para meterlos en el array los errores y luego repasarlos
 
+if ($fotoBase64 && strpos($fotoBase64, 'base64,') !== false) {
+    $fotoBlob = base64_decode(explode('base64,', $fotoBase64)[1]);
+}
 
 if(empty($email))
 {
@@ -51,14 +60,13 @@ if(empty($apellidos))
 // No sabia que esto tan comodo existía para validar, gracias ia <3
 if(!empty($email) && !filter_var($email, FILTER_VALIDATE_EMAIL)) // esto se encarga de validar lo que le pases en el primer parametro bajo el estandar del segundo.
 {
-
+    $errores[] = "email_invalido";
 }
 
 // Si hay errores que vuelva al form
 if(!empty($errores))
 {
-    $errorMsg = implode (",", $errores);
-    header("Location: /public/index.php?page=register-alumno&error=" . $errorMsg);
+    echo json_encode(['success' => false, 'errors' => $errores]);  // ✅
     exit;
 }
 
@@ -72,7 +80,7 @@ try{
 
     if($repoUser->emailExists($email))
     {
-        header('Location: /public/index.php?page=register-alumno&error=email_existe');
+        echo json_encode(['success' => false, 'error' => 'email_existe']);  // ✅
         exit;
     }
 
@@ -92,10 +100,8 @@ try{
         }
         else
         {
-
-            header('Location: /public/index.php?page=register-alumno&error=cv_formato_invalido');
+            echo json_encode(['success' => false, 'error' => 'cv_formato_invalido']);  // ✅
             exit;
-
         }
     }
 
@@ -114,7 +120,7 @@ try{
                     "ciudad" => $ciudad,
                     "direccion" => $direccion,
                     "cv" => $cvBlob,
-                    "foto" => null,
+                    "foto" => $fotoBlob,
     ];
 
 
@@ -125,7 +131,7 @@ try{
         echo json_encode([
             'success' => true,
             'message' => 'Registro exitoso',
-            'user_id' => $userId
+            'user_id' => $userID
         ]);
         exit;
         
@@ -139,3 +145,4 @@ try{
         ]);
         exit;
     }
+

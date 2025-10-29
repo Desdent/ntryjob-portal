@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -46,7 +46,7 @@
         </div>
     </main>
 
-        <!-- Modal Registro Alumno -->
+    <!-- Modal Registro Alumno -->
     <div id="modalRegistroAlumno" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -97,6 +97,14 @@
                         <div class="form-group">
                             <label for="subirCV">Subir CV (PDF/DOCX) *</label>
                             <input type="file" id="subirCV" name="subirCV" accept=".pdf,.docx" required>
+                            <span class="error-message"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Foto de perfil *</label>
+                            <button type="button" id="btnAbrirCamaraAlumno">Hacerse foto</button>
+                            <img id="fotoPreview" src="" alt="Preview" style="display:none;max-width:100px;margin-top:8px;">
+                            <input type="hidden" id="fotoAlumnoBase64" name="fotoAlumnoBase64">
                             <span class="error-message"></span>
                         </div>
                     </div>
@@ -161,10 +169,31 @@
         </div>
     </div>
 
+    <!-- Modal Cámara -->
+    <div id="modalCamaraAlumno" class="modal">
+        <div class="modal-content" style="max-width:420px">
+            <div class="modal-header">
+                <h2>Hazte una foto</h2>
+                <span class="modal-camara-close" style="cursor:pointer">&times;</span>
+            </div>
+            <div class="modal-body" style="text-align:center;">
+                <video id="camaraVideo" autoplay playsinline width="300" height="300" style="border-radius:8px;"></video>
+                <canvas id="fotoCanvas" width="300" height="300" style="display:none; border-radius:8px;"></canvas>
+                <div style="margin:10px 0; color:#2563eb; font-size:14px">
+                    Pulsa <b>Ctrl</b> y mueve la rueda para ajustar el tamaño. 
+                    Pulsa <b>Ctrl + click y arrastra</b> para mover la zona de recorte.
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="btnCapturarFoto">Capturar</button>
+                <button id="btnGuardarFoto" style="display:none">Usar esta foto</button>
+                <button id="btnCancelarFoto">Cancelar</button>
+            </div>
+        </div>
+    </div>
     
     <footer>
         <p>&copy; 2025 NTRYJOB - Tu espacio de búsqueda tranquilo</p>
     </footer>
-
 </body>
 </html>

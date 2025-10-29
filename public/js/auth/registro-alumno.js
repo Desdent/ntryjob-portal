@@ -1,4 +1,3 @@
-// Esperar a que cargue el DOM
 document.addEventListener('DOMContentLoaded', function() {
     
     const modal = document.getElementById('modalRegistroAlumno');
@@ -231,4 +230,164 @@ document.addEventListener('DOMContentLoaded', function() {
             btnSubmit.textContent = 'Registrarse';
         });
     });
+
+
+
+
+
+let stream = null;
+let arrrastar = false;
+let seMueve = false;
+let inicioMovimiento = {x:0, y:0};
+let recorte = {x:50, y:50, w:200, h:200};
+
+
+let modalCamara = document.getElementById("modalCamaraAlumno");
+let btnAbrirCamara = document.getElementById("btnAbrirCamaraAlumno");
+let btnCancelarFoto = document.getElementById("btnCancelarFoto");
+let btnCapturarFoto = document.getElementById("btnCapturarFoto");
+let btnGuardarFoto = document.getElementById("btnGuardarFoto");
+let modalClose = document.querySelector(".modal-camara-close");
+let video = document.getElementById("camaraVideo");
+let canvas = document.getElementById("fotoCanvas");
+let inputFotoBase64 = document.getElementById("fotoAlumnoBase64");
+let imgPreview = document.getElementById("fotoPreview");
+
+btnAbrirCamara.addEventListener('click', function() {
+  modalCamara.style.display = 'block'; // Muestra el modal cámara
+  canvas.style.display = 'none';
+  btnCapturarFoto.style.display = 'inline-block';
+  btnGuardarFoto.style.display = 'none';
+  video.style.display = 'inline-block';
+  // Activa la cam
+  navigator.mediaDevices.getUserMedia({ video: true }).then(function(s) {
+    stream = s;
+    video.srcObject = stream;
+  }).catch(function(err) {
+    alert('No se pudo acceder a la cámara.');
+    modalCamara.style.display = 'none';
+  });
+});
+
+function cerrarCamaraModal() {
+  modalCamara.style.display = 'none'; // Oculta el modal cámara
+  // Detiene la cam
+  if (stream) {
+    let tracks = stream.getTracks();
+    for (let i=0; i<tracks.length; i++) tracks[i].stop();
+    stream = null;
+  }
+  video.style.display = 'inline-block';
+  canvas.style.display = 'none';
+  arrastrar = false;
+}
+btnCancelarFoto.onclick = cerrarCamaraModal;
+modalClose.onclick = cerrarCamaraModal;
+window.addEventListener('click', function(e) {
+  if (e.target === modalCamara) cerrarCamaraModal();
+});
+
+
+btnCapturarFoto.onclick = function() {
+    let ctx = canvas.getContext("2d");
+    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+    renderRecorte();
+    canvas.style.display = "block";
+    video.style.display = "none";
+    btnCapturarFoto.style.display = "none";
+    btnGuardarFoto.style.display = "inline-block";
+};
+
+
+//el cuadro
+function renderRecorte() {
+    let ctx = canvas.getContext("2d");
+    //pintar la imagen
+    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+    ctx.save();
+    ctx.strokeStyle = "#2563eb";
+    ctx.lineWidth = 3;
+    ctx.setLineDash([8, 6]);
+    ctx.strokeRect(recorte.x, recorte.y, recorte.w, recorte.h);
+    ctx.restore();
+}
+
+canvas.addEventListener("wheel", function(e) {
+    if(!e.ctrlKey){
+        return;
+    }
+
+    //cambiar el tamaño
+    let factor = e.deltaY < 0 ? 1.05 : 0.95;
+    let newW = recorte.w * factor;
+    let newH = recorte.h * factor;
+
+    //para el tamaño min
+    newW = Math.max(50, Math.min(newW, canvas.width));
+    newH = Math.max(50, Math.min(newH, canvas.height));
+    if(recorte.x + newW > canvas.width)
+    {
+        newW = canvas.width-recorte.x;
+    }
+
+    if(recorte.y + newH > canvas.height)
+    {
+        newH = canvas.height-recorte.y;
+    }
+
+    recorte.w = newW;
+    recorte.h = newH;
+    renderRecorte();
+});
+
+
+canvas.addEventListener("mousedown", function(ev) {
+
+    if(!ev.ctrlKey){
+        return;
+    }
+    let mx = ev.offsetX, my = ev.offsetY;
+    if(mx >= recorte.x && mx <= recorte.x+recorte.w && my >= recorte.y && my <= recorte.y+recorte.h){
+        arrastrar = true;
+        inicioMovimiento.x = mx - recorte.x;
+        inicioMovimiento.y = my - recorte.y;
+    }
+});
+
+canvas.addEventListener("mousemove", function(ev) {
+    if(arrastrar) {
+        let nx = ev.offsetX-inicioMovimiento.x;
+        let ny = ev.offsetY-inicioMovimiento.y;
+        nx = Math.max(0, Math.min(nx, canvas.width-recorte.w));
+        ny = Math.max(0, Math.min(ny, canvas.height-recorte.h));
+        recorte.x = nx;
+        recorte.y = ny;
+        renderRecorte();
+    }
+})
+
+canvas.addEventListener("mouseup", function(ev) {
+    arrastrar = false;
+})
+canvas.addEventListener("mouseleave", function(ev) {
+    arrastrar = false;
+})
+
+
+btnGuardarFoto.onclick = function() {
+    let subCanvas = document.createElement("canvas");
+    subCanvas.width = recorte.w;
+    subCanvas.height = recorte.h;
+    subCanvas.getContext("2d").drawImage(
+        canvas,
+        recorte.x, recorte.y, recorte.w, recorte.h, 0, 0, recorte.w, recorte.h
+    );
+    let fotoFinalBase64 = subCanvas.toDataURL('image/jpeg');
+    inputFotoBase64.value = fotoFinalBase64;
+    imgPreview.src = fotoFinalBase64;
+    imgPreview.style.display = 'inline-block';
+    cerrarCamaraModal();
+}
+
 });
