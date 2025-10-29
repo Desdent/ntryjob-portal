@@ -68,7 +68,7 @@ class RepoUser {
     }
 
     /**
-     * Crear alumno completo (USER + ALUMNO)
+     * Crear alumno completo
      */
     public function createAlumno($userData, $alumnoData) {
         try {
@@ -103,5 +103,63 @@ class RepoUser {
             throw $e;
         }
     }
+
+
+
+    public function createEmpresa($userData, $empresaData) {
+        try {
+            $this->pdo->beginTransaction();
+            
+            // Primero crea el usuario basandose en los campos del array userData junto con el numero del rol 
+            $userId = $this->createUser($userData['email'], $userData['password'], 2); 
+            
+            // Despues se prepara la sentencia sql
+            $sql = "INSERT INTO EMPRESA (nombre, telefono, pais, provincia, ciudad, direccion, logo, USER_id, aprobada)
+                                VALUES (:nombre, :telefono, :pais, :provincia, :ciudad, :direccion, :logo, :userId, :aprobada)";
+            
+            // Se asignan los marcadores
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindValue(":nombre", $empresaData['nombre']);
+            $stmt->bindValue(":telefono", $empresaData['telefono'] ?? null);
+            $stmt->bindValue(":pais", $empresaData['pais'] ?? null);
+            $stmt->bindValue(":provincia", $empresaData['provincia'] ?? null);
+            $stmt->bindValue(":ciudad", $empresaData['ciudad'] ?? null);
+            $stmt->bindValue(":direccion", $empresaData['direccion'] ?? null);
+            $stmt->bindValue(":logo", $empresaData['logo'] ?? null);
+            $stmt->bindValue(":userId", $userId);
+            $stmt->bindValue(":aprobada", false);
+            $stmt->execute();
+            
+            // y si todo sale bien se hace el commit
+            $this->pdo->commit();
+            return $userId;
+            
+        } catch (Exception $e) {
+            $this->pdo->rollBack();
+            throw $e;
+        }
+    }
+
+
+    public function loginValido($email, $password) {
+
+    $valido = false;
+    $sql = "SELECT * FROM USER WHERE email = :email";
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->bindValue(":email", $email);
+    $stmt->execute();
+
+    
+    $usuario = $stmt->fetch();
+    if ($usuario && password_verify($password, $usuario['password'])) {
+        $valido = true;
+    }
+
+    return $valido;
+    }
+
+
+
+    
 
 }
